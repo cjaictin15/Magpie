@@ -20,7 +20,6 @@ public class Magpie
  {
   return "Hello, let's talk.";
  }
- 
  /**
   * Gives a response to a user statement
   * 
@@ -34,6 +33,10 @@ public class Magpie
   if (statement.indexOf("no") >= 0)
   {
    response = "Why so negative?";
+  }
+  else if (statement.trim().length() == 0)
+  {
+    return "SAY SOMETHING! Or I'm giving up on you.";
   }
   else if (statement.indexOf("mother") >= 0
     || statement.indexOf("father") >= 0
