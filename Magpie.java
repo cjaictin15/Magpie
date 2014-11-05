@@ -6,7 +6,7 @@ public class Magpie
    */
   public String getGreeting()
   {
-    return "Hello, let's talk.";
+    return "Hello, let's talk. Tell me about yourself..."; //user will be more inclined to talk about their pet or family
   }
   /**
    * Gives a response to a user statement
@@ -18,7 +18,7 @@ public class Magpie
   public String getResponse(String statement)
   { 
     String response = "";
-    if (statement.trim().length() == 0)
+    if (statement.trim().length() == 0) //varying responses for blank answers
     {
       final int blankhuman = 5;
       double r = Math.random();
@@ -45,7 +45,7 @@ public class Magpie
       response = "Tell me more about your family.";
     }
     else if (statement.indexOf("Kiang") >= 0
-               || statement.indexOf("Landgraf") >= 0)
+               || statement.indexOf("Landgraf") >= 0) //varying responses for teachers
     {
       final int teacher = 2;
       double r = Math.random();
@@ -56,13 +56,25 @@ public class Magpie
       else if (teacherlove == 2) {response = "That guy? I like him.";}
       return response;
     }
-    else if (statement.indexOf("cat") >= 0)
+    else if (statement.indexOf("cat") >= 0) //pet responses
     {
       return "You have a cat? I have one too... His name is Binky";
     }
     else if (statement.indexOf("dog") >= 0)
     {
       return "You have a dog? I have one too... His name is Rover";
+    }
+    else if (statement.indexOf("sport") >= 0 || statement.indexOf("sports") >= 0) //three more key words (sport, school, music)
+    {
+      return "Sports? What's your favorite sport and why?";
+    }
+    else if (statement.indexOf("school") >= 0)
+    {
+      return "School? What do you like about school?";
+    }
+    else if (statement.indexOf("music") >= 0)
+    {
+      return "I love music! What's your favorite song?";
     }
     else
     {
@@ -77,7 +89,7 @@ public class Magpie
    */
   private String getRandomResponse()
   {
-    final int NUMBER_OF_RESPONSES = 4;
+    final int NUMBER_OF_RESPONSES = 6;
     double r = Math.random();
     int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
     String response = "";
@@ -98,7 +110,18 @@ public class Magpie
     {
       response = "You don't say.";
     }
-    
+    else if (whichResponse == 4) //3 more non-committal statements
+    {
+      response = "Really?";
+    }
+    else if (whichResponse == 5)
+    {
+      response = "What!";
+    }
+    else if (whichResponse == 6)
+    {
+      response = "That's cool!";
+    }
     return response;
   }
 }
