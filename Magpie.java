@@ -1,15 +1,3 @@
-/**
- * A program to carry on conversations with a human user.
- * This is the initial version that:  
- * <ul><li>
- *       Uses indexOf to find strings
- * </li><li>
- *       Handles responding to simple words and phrases 
- * </li></ul>
- * This version uses a nested if to handle default responses.
- * @author Laurie White
- * @version April 2012
- */
 public class Magpie
 {
   /**
@@ -55,6 +43,26 @@ public class Magpie
                || statement.indexOf("brother") >= 0)
     {
       response = "Tell me more about your family.";
+    }
+    else if (statement.indexOf("Kiang") >= 0
+               || statement.indexOf("Landgraf") >= 0)
+    {
+      final int teacher = 2;
+      double r = Math.random();
+      int teacherlove = (int)(r * teacher);
+      
+      if (teacherlove == 0) {response = "Oh, he's a really great teacher.";}
+      if (teacherlove == 1) {response = "Him? I love that guy. He's cool";}
+      else if (teacherlove == 2) {response = "That guy? I like him.";}
+      return response;
+    }
+    else if (statement.indexOf("cat") >= 0)
+    {
+      return "You have a cat? I have one too... His name is Binky";
+    }
+    else if (statement.indexOf("dog") >= 0)
+    {
+      return "You have a dog? I have one too... His name is Rover";
     }
     else
     {
