@@ -64,6 +64,18 @@ public class Magpie
     {
       return "You have a dog? I have one too... His name is Rover";
     }
+    else if (statement.indexOf("sport") >= 0 || statement.indexOf("sports") >= 0) //three more key words (sport, school, music)
+    {
+      return "Sports? What's your favorite sport and why?";
+    }
+    else if (statement.indexOf("school") >= 0)
+    {
+      return "School? What do you like about school?";
+    }
+    else if (statement.indexOf("music") >= 0)
+    {
+      return "I love music! What's your favorite song?";
+    }
     else
     {
       response = getRandomResponse();
@@ -77,7 +89,7 @@ public class Magpie
    */
   private String getRandomResponse()
   {
-    final int NUMBER_OF_RESPONSES = 5;
+    final int NUMBER_OF_RESPONSES = 6;
     double r = Math.random();
     int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
     String response = "";
@@ -98,7 +110,7 @@ public class Magpie
     {
       response = "You don't say.";
     }
-    else if (whichResponse == 4)
+    else if (whichResponse == 4) //3 more non-committal statements
     {
       response = "Really?";
     }
@@ -106,7 +118,10 @@ public class Magpie
     {
       response = "What!";
     }
-    
+    else if (whichResponse == 6)
+    {
+      response = "That's cool!";
+    }
     return response;
   }
 }
