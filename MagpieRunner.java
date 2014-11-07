@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class MagpieRunner
 {
 
- /**
+ /*
   * Create a Magpie, give it user input, and print its replies.
   */
  public static void main(String[] args)
