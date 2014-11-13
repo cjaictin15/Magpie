@@ -11,6 +11,11 @@ public class Magpie
     return "Hello, let's talk. Tell me about yourself..."; //user will be more inclined to talk about their pet or family
   }
   
+    private int findKeyword(String statement, String goal)
+  {
+    return findKeyword (statement, goal, 0);
+  }
+  
   //expands contractions
   private String expandContraction(String statement)
   {
@@ -286,6 +291,12 @@ public class Magpie
       {
         response = transformYouMeStatement(statement);
       }
+      
+      if (psn >= 0
+            && findKeyword(statement, "is", psn) >= 0)
+      {
+        response = transformIsStatementtoquestion(statement);
+      }
       else
       {
         response = getRandomResponse();
@@ -355,16 +366,12 @@ public class Magpie
                                         .length() - 1);
     }
     
-    int psnOfIs = findKeyword (statement, "Is", 0);
+    int psnOfIs = findKeyword (statement, "is", 0);
     
     String restOfStatement = statement.substring(psnOfIs).trim();
     return "Why is " + restOfStatement + " ?";
   }
-  
-  private int findKeyword(String statement, String goal)
-  {
-    return findKeyword (statement, goal, 0);
-  }
+
   
   /**
    * Pick a default response to use if nothing else fits.
