@@ -17,7 +17,7 @@ public class Magpie
   }
   
   //expands contractions
-  private String expandContraction(String statement)
+  public String expandContraction(String statement)
   {
     String temp = statement;
     
@@ -280,27 +280,22 @@ public class Magpie
       response = transformIWantToStatement(statement);
     }
     
-    else
-    {
-      // Look for a two word (you <something> me)
-      // pattern
-      int psn = findKeyword(statement, "you", 0);
-      
-      if (psn >= 0
-            && findKeyword(statement, "me", psn) >= 0)
+    else if ((findKeyword(statement, "You", 0) >=0) && (findKeyword(statement, "me", 0) >=0))
       {
         response = transformYouMeStatement(statement);
       }
       
-      if (psn >= 0
-            && findKeyword(statement, "is", psn) >= 0)
+    else if (findKeyword(statement, "is", 0) >= 0)
       {
         response = transformIsStatementtoquestion(statement);
       }
-      else
-      {
-        response = getRandomResponse();
-      }
+    else if (findKeyword(statement, "I want to", 0) >= 0)
+    {
+      response = transformIWantToStatement(statement);
+    }
+    else
+    {
+      response = getRandomResponse();
     }
     return response;
   }
@@ -368,8 +363,8 @@ public class Magpie
     
     int psnOfIs = findKeyword (statement, "is", 0);
     
-    String restOfStatement = statement.substring(psnOfIs).trim();
-    return "Why is " + restOfStatement + " ?";
+    String restOfStatement = statement.substring(psnOfIs + 2).trim();
+    return "Why is it " + restOfStatement + " ?";
   }
 
   
